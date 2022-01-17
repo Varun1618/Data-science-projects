@@ -1,0 +1,92 @@
+from tkinter import *
+window=Tk()
+window.geometry('600x300')
+window.title("ATM Machine")
+window.config(bg='black')
+t1=Label(window,text="ATM MACHINE", fg='white',bg='black', font=('Calibri',30)).place(x=190,y=50)
+def msg():
+    from tkinter import messagebox
+    a1=messagebox.showinfo("message","Card inserted...")
+    my_w=Toplevel(window)
+    my_w.geometry('600x400')
+    my_w.title("Options")
+    my_w.config(bg='black')
+    def deposit():
+        w1=Toplevel(my_w)
+        w1.geometry('600x400')
+        w1.title("Deposit")
+        w1.config(bg='black')
+        t3=Label(w1, text="ATM MACHINE", fg='white', bg='black', font=('Calibri',30)).place(x=190, y=50)
+        t4=Label(w1, text="Enter Pin:", fg='white',bg='black', font=('Calibri', 12)).place(x=70, y=120)
+        e1=Entry(w1, show="*", width='25', font=('Calibri', 10)).place(x=230, y=120)
+        t5=Label(w1, text="Amount to Deposit:", fg='white',bg='black', font=('Calibri',12)).place(x=70,y=150)
+        e2=Entry(w1,width='25',font=('Calibri',10)).place(x=230, y=150)
+        def deposited():
+            a2=messagebox.showinfo("message","Amount Deposited successfully")
+            def cancel():
+                a6=messagebox.showinfo("message","Collect your card...")
+                w1.destroy()
+            b8=Button(w1, text="Cancel", fg='white', bg='black', font=('Calibri',13),command=cancel).place(x=210, y=230)
+        b7=Button(w1, text="Press OK", fg='white', bg='black', font=('Calibri',13),command=deposited).place(x=200, y=190)
+    def withdrawal():
+        w2=Toplevel(my_w)
+        w2.geometry('600x400')
+        w2.title("WithDrawal")
+        w2.config(bg='black')
+        t6=Label(w2, text="ATM MACHINE", fg='white', bg='black', font=('Calibri',30)).place(x=190, y=50)
+        t7=Label(w2, text="Enter Pin:", fg='white',bg='black', font=('Calibri', 12)).place(x=70, y=120)
+        e3=Entry(w2, show="*", width='25', font=('Calibri', 10)).place(x=230, y=120)
+        t8=Label(w2, text="Amount to Withdraw:", fg='white',bg='black', font=('Calibri',12)).place(x=70,y=150)
+        e4=Entry(w2,width='25',font=('Calibri',10)).place(x=230, y=150)
+        def withdrawed():
+            a3=messagebox.showinfo("message","Amount Withdrawn successfully...\nCollect your money...")
+            def cancel():
+                a7=messagebox.showinfo("message","Collect your card...")
+                w2.destroy()
+            b10=Button(w2, text="Cancel", fg='white', bg='black', font=('Calibri',13),command=cancel).place(x=210, y=230)
+        b9=Button(w2, text="Press OK", fg='white', bg='black', font=('Calibri',13),command=withdrawed).place(x=200, y=190)
+    def bankbalance():
+        balance=10000
+        w3=Toplevel(my_w)
+        w3.geometry('600x400')
+        w3.title("Bank Balance")
+        w3.config(bg='black')
+        t8=Label(w3, text="ATM MACHINE", fg='white', bg='black', font=('Calibri',30)).place(x=190, y=50)
+        t9=Label(w3, text="Enter Pin:", fg='white',bg='black', font=('Calibri', 12)).place(x=70, y=120)
+        e5=Entry(w3, show="*", width='25', font=('Calibri', 10)).place(x=230, y=120)
+        def balance():
+            a4=messagebox.showinfo("message","Your Bank Balance:10000")
+            def cancel():
+                a8=messagebox.showinfo("message","Collect your card...")
+                w3.destroy()
+            b13=Button(w3, text="Cancel", fg='white', bg='black', font=('Calibri',13),command=cancel).place(x=210, y=230)
+        b11=Button(w3, text="Press OK", fg='white', bg='black', font=('Calibri',13),command=balance).place(x=200, y=190)
+    def password():
+        w4=Toplevel(my_w)
+        w4.geometry('600x400')
+        w4.title("Change Password")
+        w4.config(bg='black')
+        t10=Label(w4, text="ATM MACHINE", fg='white', bg='black', font=('Calibri',30)).place(x=190, y=50)
+        t11=Label(w4, text="Enter Pin:", fg='white',bg='black', font=('Calibri', 12)).place(x=70, y=120)
+        e5=Entry(w4, show="*", width='25', font=('Calibri', 10)).place(x=230, y=120)
+        t12=Label(w4, text="Enter new password:", fg='white', bg='black', font=('Calibri',12)).place(x=70, y=150)
+        e6=Entry(w4, show="*",width='25', font=('Calibri',10)).place(x=230, y=150)
+        t13=Label(w4, text="Confirm password:", fg='white', bg='black', font=('Calibri',12)).place(x=70, y=180)
+        e7=Entry(w4, show="*", width='25', font=('Calibri',10)).place(x=230, y=180)
+        def change():
+            a5=messagebox.showinfo("message","Password changed successfully...")
+            def cancel():
+                a9=messagebox.showinfo("message","Collect your card...")
+                w4.destroy()
+            b14=Button(w4, text="Cancel", fg='white', bg='black', font=('Calibri',13),command=cancel).place(x=220, y=270)
+        b12=Button(w4, text="Change Password", fg='white', bg='black', font=('Calibri',13),command=change).place(x=200, y=220)
+    def cancel():
+        my_w.destroy()
+    t2=Label(my_w,text="ATM MACHINE", fg='white',bg='black', font=('Calibri',30)).place(x=190,y=50)
+    b2=Button(my_w, text="Cash Deposit", fg='white', bg='black',width='25', font=('Calibri',13),command=deposit).place(x=200, y=120)
+    b3=Button(my_w, text="Cash Withdrawal", fg='white', bg='black',width='25', font=('Calibri',13),command=withdrawal).place(x=200, y=160)
+    b4=Button(my_w, text="Bank Balance", fg='white', bg='black',width='25', font=('Calibri',13),command=bankbalance).place(x=200, y=200)
+    b5=Button(my_w, text="Change Password", fg='white', bg='black',width='25', font=('Calibri',13),command=password).place(x=200, y=240)
+    b6=Button(my_w, text="Cancel", fg='white', bg='black', font=('Calibri',13),command=cancel).place(x=280,y=280)
+b1=Button(window, text="Insert your card...", fg='white', bg='black', font=('Calibri',15),command=msg).place(x=220, y=110)
+window.mainloop()
